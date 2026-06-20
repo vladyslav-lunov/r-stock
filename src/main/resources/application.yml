@@ -1,11 +1,12 @@
 spring:
   application:
-    name: stockr
+    name: r-stock
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: lunov
-    url: jdbc:postgresql://localhost:5432/lunov
+    username: ${DB_USER:lunov}
+    password: ${DB_PASSWORD:lunov}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/lunov}
   jpa:
     hibernate:
       ddl-auto: validate
@@ -13,3 +14,7 @@ spring:
 
   flyway:
     locations: classpath:db/migration
+    password: ${DB_PASSWORD:lunov}
+    user: ${DB_USER:lunov}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/lunov}
+    baseline-on-migrate: true
